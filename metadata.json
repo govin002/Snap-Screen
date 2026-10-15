@@ -1,0 +1,6 @@
+{
+  "name": "CapturePro PC - Screen Recorder & Snipping Studio",
+  "description": "Professional PC screen recorder, webcam studio, audio mixer, and screenshot capture suite with real-time annotations, blur redaction, and video trimming.",
+  "requestFramePermissions": ["camera", "microphone", "display-capture"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
