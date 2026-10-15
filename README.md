@@ -49,12 +49,15 @@
 
 | Package | Format | Direct Download | How to Run |
 |---|---|---|---|
-| **Windows Desktop Launcher** | `.zip` (PKZIP) | [**Download `CapturePro-Windows.zip`**](https://ais-dev-gq4drhi4etgfns74tlwr5v-22416287859.asia-east1.run.app/downloads/CapturePro-Windows.zip) | Extract & double-click `Launch-CapturePro.bat` |
+| **Windows Desktop Package** | `.zip` (PKZIP) | [**Download `CapturePro-Windows.zip`**](https://ais-dev-gq4drhi4etgfns74tlwr5v-22416287859.asia-east1.run.app/downloads/CapturePro-Windows.zip) | Extract & double-click `Launch-CapturePro.bat` |
 
 #### Windows Running Details:
-1. Download and extract **`CapturePro-Windows.zip`** *(Standard PKZIP format compatible with Windows Explorer)*.
-2. Double-click **`Launch-CapturePro.bat`** to open CapturePro in a dedicated desktop window without browser tabs or address bars.
-3. Or double-click **`Create-Desktop-Shortcut.vbs`** to automatically add a shortcut icon to your Windows Desktop.
+1. Download and extract **`CapturePro-Windows.zip`** *(Product by Gowin)*.
+2. Double-click **`Launch-CapturePro.bat`**:
+   - It will check and ask: *"Would you like to create a Desktop Shortcut? (Y/N)"*
+   - If selected **Y**, it creates an official Windows Desktop Shortcut with the custom **`app.ico`** icon and description *"CapturePro PC — Product by Gowin"*.
+   - Launches CapturePro in a dedicated desktop window without browser tabs or address bars.
+3. You can also run **`Create-Desktop-Shortcut.vbs`** at any time to create the desktop icon.
 
 ---
 

@@ -93,9 +93,14 @@ export default function App() {
           <div className="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white shadow-md shadow-indigo-900/40">
             <MonitorPlay className="w-4 h-4" />
           </div>
-          <span className="text-base font-bold tracking-tight text-white whitespace-nowrap">
-            CapturePro PC
-          </span>
+          <div className="flex flex-col leading-tight">
+            <span className="text-base font-bold tracking-tight text-white whitespace-nowrap">
+              CapturePro PC
+            </span>
+            <span className="text-[10px] text-neutral-400 font-medium tracking-wide">
+              Product by Gowin
+            </span>
+          </div>
         </div>
 
         {/* Zone 2: Concise single-line navigation links */}
@@ -202,9 +207,11 @@ export default function App() {
       {/* Footer */}
       <footer className="border-t border-neutral-800/60 px-6 py-3 flex flex-wrap items-center justify-between text-xs text-neutral-400 bg-neutral-950">
         <div className="flex items-center gap-2">
-          <span>CapturePro PC Studio</span>
+          <span>CapturePro PC</span>
           <span aria-hidden="true">·</span>
           <span>Screen Recording &amp; Snipping Tools</span>
+          <span aria-hidden="true">·</span>
+          <span className="text-indigo-400 font-medium">Product by Gowin</span>
         </div>
         <div className="flex items-center gap-4 text-[11px]">
           <span>100% Local Hardware Accelerated</span>

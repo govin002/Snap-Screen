@@ -50,11 +50,12 @@ export const DesktopAppModal: React.FC<DesktopAppModalProps> = ({ isOpen, onClos
               <Laptop className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="font-bold text-sm text-neutral-100">
-                Desktop Application &amp; GitHub Downloads
+              <h3 className="font-bold text-sm text-neutral-100 flex items-center gap-2">
+                <span>CapturePro PC</span>
+                <span className="text-[11px] font-normal text-indigo-400">· Product by Gowin</span>
               </h3>
               <p className="text-[11px] text-neutral-400">
-                Native packages for Windows (.exe) and Linux (.AppImage, .deb)
+                Native packages with custom icon (app.ico) &amp; desktop shortcut setup
               </p>
             </div>
           </div>
@@ -165,7 +166,7 @@ export const DesktopAppModal: React.FC<DesktopAppModalProps> = ({ isOpen, onClos
                       <span className="text-[10px] text-neutral-500 font-mono">x64 / 64-bit</span>
                     </div>
                     <p className="text-neutral-400 text-xs mb-3">
-                      Compatible with Windows 11 and Windows 10.
+                      Includes custom <code className="text-indigo-400 font-mono">app.ico</code>. Asks on launch to create your desktop shortcut. Product by Gowin.
                     </p>
                     <div className="space-y-2">
                       <a
@@ -178,7 +179,7 @@ export const DesktopAppModal: React.FC<DesktopAppModalProps> = ({ isOpen, onClos
                           <span className="font-semibold text-xs">CapturePro-Windows.zip</span>
                         </div>
                         <span className="text-[10px] bg-indigo-600 px-2 py-0.5 rounded text-white font-mono font-medium">
-                          Direct Package
+                          Custom Icon &amp; Launcher
                         </span>
                       </a>
                     </div>
@@ -196,7 +197,7 @@ export const DesktopAppModal: React.FC<DesktopAppModalProps> = ({ isOpen, onClos
                       <span className="text-[10px] text-neutral-500 font-mono">x86_64 / amd64</span>
                     </div>
                     <p className="text-neutral-400 text-xs mb-3">
-                      Compatible with Ubuntu, Debian, Fedora, Arch, and Mint.
+                      Includes desktop icon &amp; shortcut setup prompt. Product by Gowin.
                     </p>
                     <div className="space-y-2">
                       <a
