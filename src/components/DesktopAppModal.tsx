@@ -10,6 +10,10 @@ import {
   Shield,
   Zap,
   Sparkles,
+  Github,
+  FolderDown,
+  Monitor,
+  Cpu,
 } from 'lucide-react';
 import { usePWAInstall } from '../hooks/usePWAInstall';
 
@@ -21,7 +25,8 @@ interface DesktopAppModalProps {
 export const DesktopAppModal: React.FC<DesktopAppModalProps> = ({ isOpen, onClose }) => {
   const { isInstallable, isInstalled, install } = usePWAInstall();
   const [copiedCommand, setCopiedCommand] = useState<string | null>(null);
-  const [activeTab, setActiveTab] = useState<'pwa' | 'electron'>('pwa');
+  const [activeTab, setActiveTab] = useState<'github' | 'pwa' | 'cli'>('github');
+  const [githubRepo, setGithubRepo] = useState<string>('gowin297/capturepro-pc');
 
   if (!isOpen) return null;
 
@@ -30,6 +35,10 @@ export const DesktopAppModal: React.FC<DesktopAppModalProps> = ({ isOpen, onClos
     setCopiedCommand(id);
     setTimeout(() => setCopiedCommand(null), 2000);
   };
+
+  const cleanRepo = githubRepo.trim().replace(/^https?:\/\/github\.com\//, '');
+  const releasesUrl = `https://github.com/${cleanRepo}/releases`;
+  const latestReleaseUrl = `https://github.com/${cleanRepo}/releases/latest`;
 
   return (
     <div className="fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
@@ -42,10 +51,10 @@ export const DesktopAppModal: React.FC<DesktopAppModalProps> = ({ isOpen, onClos
             </div>
             <div>
               <h3 className="font-bold text-sm text-neutral-100">
-                Run CapturePro as a PC Desktop Application
+                Desktop Application &amp; GitHub Downloads
               </h3>
               <p className="text-[11px] text-neutral-400">
-                Two ways to get a native desktop app on Windows, macOS, or Linux
+                Native packages for Windows (.exe) and Linux (.AppImage, .deb)
               </p>
             </div>
           </div>
@@ -60,30 +69,188 @@ export const DesktopAppModal: React.FC<DesktopAppModalProps> = ({ isOpen, onClos
         {/* Tab switch */}
         <div className="px-6 py-2.5 bg-neutral-950/60 border-b border-neutral-800/80 flex items-center gap-2 text-xs">
           <button
+            onClick={() => setActiveTab('github')}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-colors ${
+              activeTab === 'github'
+                ? 'bg-neutral-800 text-white shadow-xs'
+                : 'text-neutral-400 hover:text-white'
+            }`}
+          >
+            <Github className="w-3.5 h-3.5 text-white" />
+            <span>Direct GitHub Downloads</span>
+          </button>
+          <button
             onClick={() => setActiveTab('pwa')}
-            className={`px-3 py-1.5 rounded-lg font-medium transition-colors ${
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-colors ${
               activeTab === 'pwa'
                 ? 'bg-neutral-800 text-white shadow-xs'
                 : 'text-neutral-400 hover:text-white'
             }`}
           >
-            Method 1: Instant Desktop Install (PWA)
+            <Sparkles className="w-3.5 h-3.5 text-indigo-400" />
+            <span>Instant Desktop PWA</span>
           </button>
           <button
-            onClick={() => setActiveTab('electron')}
-            className={`px-3 py-1.5 rounded-lg font-medium transition-colors ${
-              activeTab === 'electron'
+            onClick={() => setActiveTab('cli')}
+            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-medium transition-colors ${
+              activeTab === 'cli'
                 ? 'bg-neutral-800 text-white shadow-xs'
                 : 'text-neutral-400 hover:text-white'
             }`}
           >
-            Method 2: Standalone .EXE / Electron Build
+            <Terminal className="w-3.5 h-3.5 text-emerald-400" />
+            <span>Build from Source (CLI)</span>
           </button>
         </div>
 
         {/* Content */}
         <div className="p-6 overflow-y-auto space-y-6 text-xs text-neutral-300">
-          {activeTab === 'pwa' ? (
+          {activeTab === 'github' && (
+            <div className="space-y-5">
+              {/* Repo Config Header */}
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-3.5 bg-neutral-950/60 rounded-xl border border-neutral-800">
+                <div className="flex items-center gap-2 text-neutral-300">
+                  <Github className="w-4 h-4 text-white shrink-0" />
+                  <span>GitHub Repository:</span>
+                  <input
+                    type="text"
+                    value={githubRepo}
+                    onChange={(e) => setGithubRepo(e.target.value)}
+                    placeholder="username/repository"
+                    className="bg-neutral-900 border border-neutral-700 rounded px-2 py-1 text-white text-xs font-mono focus:border-indigo-500 outline-none w-56"
+                  />
+                </div>
+                <a
+                  href={releasesUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="flex items-center gap-1 px-3 py-1.5 bg-neutral-800 hover:bg-neutral-700 text-neutral-200 rounded-lg text-xs font-medium border border-neutral-700 transition-colors"
+                >
+                  <span>Open GitHub Releases</span>
+                  <ExternalLink className="w-3 h-3 text-neutral-400" />
+                </a>
+              </div>
+
+              {/* Direct Download Cards Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Windows Card */}
+                <div className="p-4 bg-neutral-950/70 border border-neutral-800 rounded-xl flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-2 text-white font-semibold text-sm">
+                        <Monitor className="w-4 h-4 text-indigo-400" />
+                        <span>Windows</span>
+                      </div>
+                      <span className="text-[10px] text-neutral-500 font-mono">x64 / 64-bit</span>
+                    </div>
+                    <p className="text-neutral-400 text-xs mb-3">
+                      Compatible with Windows 11 and Windows 10.
+                    </p>
+                    <div className="space-y-2">
+                      <a
+                        href={`${latestReleaseUrl}/download/CapturePro-Setup-1.0.0.exe`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="w-full flex items-center justify-between p-2.5 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700/80 rounded-lg text-neutral-200 transition-colors"
+                      >
+                        <div className="flex items-center gap-2">
+                          <FolderDown className="w-4 h-4 text-indigo-400" />
+                          <span className="font-medium text-xs">CapturePro-Setup.exe</span>
+                        </div>
+                        <span className="text-[10px] bg-neutral-800 px-1.5 py-0.5 rounded text-neutral-400 font-mono">
+                          Installer
+                        </span>
+                      </a>
+
+                      <a
+                        href={`${latestReleaseUrl}/download/CapturePro-1.0.0-portable.exe`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="w-full flex items-center justify-between p-2.5 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700/80 rounded-lg text-neutral-200 transition-colors"
+                      >
+                        <div className="flex items-center gap-2">
+                          <Download className="w-4 h-4 text-neutral-400" />
+                          <span className="font-medium text-xs">CapturePro-Portable.exe</span>
+                        </div>
+                        <span className="text-[10px] bg-neutral-800 px-1.5 py-0.5 rounded text-neutral-400 font-mono">
+                          Portable
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Linux Card */}
+                <div className="p-4 bg-neutral-950/70 border border-neutral-800 rounded-xl flex flex-col justify-between">
+                  <div>
+                    <div className="flex items-center justify-between mb-2">
+                      <div className="flex items-center gap-2 text-white font-semibold text-sm">
+                        <Cpu className="w-4 h-4 text-amber-400" />
+                        <span>Linux</span>
+                      </div>
+                      <span className="text-[10px] text-neutral-500 font-mono">x86_64 / amd64</span>
+                    </div>
+                    <p className="text-neutral-400 text-xs mb-3">
+                      Compatible with Ubuntu, Debian, Fedora, Arch, and Mint.
+                    </p>
+                    <div className="space-y-2">
+                      <a
+                        href={`${latestReleaseUrl}/download/CapturePro-1.0.0.AppImage`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="w-full flex items-center justify-between p-2.5 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700/80 rounded-lg text-neutral-200 transition-colors"
+                      >
+                        <div className="flex items-center gap-2">
+                          <FolderDown className="w-4 h-4 text-amber-400" />
+                          <span className="font-medium text-xs">CapturePro.AppImage</span>
+                        </div>
+                        <span className="text-[10px] bg-neutral-800 px-1.5 py-0.5 rounded text-neutral-400 font-mono">
+                          Universal
+                        </span>
+                      </a>
+
+                      <a
+                        href={`${latestReleaseUrl}/download/CapturePro_1.0.0_amd64.deb`}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="w-full flex items-center justify-between p-2.5 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700/80 rounded-lg text-neutral-200 transition-colors"
+                      >
+                        <div className="flex items-center gap-2">
+                          <Download className="w-4 h-4 text-neutral-400" />
+                          <span className="font-medium text-xs">CapturePro_amd64.deb</span>
+                        </div>
+                        <span className="text-[10px] bg-neutral-800 px-1.5 py-0.5 rounded text-neutral-400 font-mono">
+                          Debian/Ubuntu
+                        </span>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Automated GitHub Actions CI/CD explanation */}
+              <div className="p-4 bg-neutral-950/60 rounded-xl border border-neutral-800 space-y-2">
+                <div className="flex items-center gap-2 text-neutral-200 font-semibold text-xs">
+                  <Zap className="w-4 h-4 text-indigo-400" />
+                  <span>Automated GitHub Release Pipeline Included</span>
+                </div>
+                <p className="text-neutral-400 text-[11px] leading-relaxed">
+                  The repository includes an automated workflow at{' '}
+                  <code className="text-indigo-400 bg-neutral-900 px-1.5 py-0.5 rounded border border-neutral-800 font-mono">
+                    .github/workflows/build-desktop.yml
+                  </code>
+                  . Whenever you push to your GitHub repo and publish a tag (e.g.{' '}
+                  <code className="font-mono text-neutral-300">git tag v1.0.0 &amp;&amp; git push --tags</code>
+                  ), GitHub Actions automatically spins up Windows &amp; Ubuntu runners, compiles
+                  the binaries, and publishes the downloadable <code className="font-mono text-indigo-300">.exe</code>,{' '}
+                  <code className="font-mono text-amber-300">.AppImage</code>, and{' '}
+                  <code className="font-mono text-amber-300">.deb</code> files directly into your GitHub Releases tab!
+                </p>
+              </div>
+            </div>
+          )}
+
+          {activeTab === 'pwa' && (
             <div className="space-y-5">
               {/* Feature highlight */}
               <div className="p-4 rounded-xl bg-indigo-950/30 border border-indigo-800/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
@@ -136,7 +303,7 @@ export const DesktopAppModal: React.FC<DesktopAppModalProps> = ({ isOpen, onClos
                     },
                     {
                       title: 'Taskbar & Start Menu Shortcut',
-                      desc: 'Launch directly from your Windows taskbar, Mac Dock, or desktop icon.',
+                      desc: 'Launch directly from your Windows taskbar, Linux app menu, or desktop icon.',
                     },
                     {
                       title: 'Full Offline Recording & Snipping',
@@ -160,118 +327,71 @@ export const DesktopAppModal: React.FC<DesktopAppModalProps> = ({ isOpen, onClos
                   ))}
                 </div>
               </div>
-
-              {/* Manual Browser Instructions if prompt blocked */}
-              <div className="p-3.5 bg-neutral-950/60 rounded-xl border border-neutral-800 text-neutral-400 leading-relaxed text-[11px]">
-                <strong className="text-neutral-200 block mb-1">
-                  How to install manually from your browser:
-                </strong>
-                <ul className="list-disc list-inside space-y-1">
-                  <li>
-                    <strong>Google Chrome:</strong> Click the small screen/computer icon on the
-                    right side of the address bar, or click Menu (⋮) →{' '}
-                    <span className="text-neutral-200">"Cast, save, and share"</span> →{' '}
-                    <span className="text-indigo-400">"Install CapturePro PC"</span>.
-                  </li>
-                  <li>
-                    <strong>Microsoft Edge:</strong> Click the App icon in the address bar, or
-                    Menu (...) → <span className="text-indigo-400">"Apps"</span> →{' '}
-                    <span className="text-indigo-400">"Install CapturePro PC"</span>.
-                  </li>
-                </ul>
-              </div>
             </div>
-          ) : (
-            /* Electron / Standalone Native Build */
+          )}
+
+          {activeTab === 'cli' && (
             <div className="space-y-4">
               <p className="text-neutral-300 leading-relaxed">
-                If you want to compile a standalone <strong>.exe (Windows)</strong>,{' '}
-                <strong>.dmg (macOS)</strong>, or <strong>.AppImage (Linux)</strong> installer that
-                runs independently of any browser, the project already includes a turnkey{' '}
-                <code className="text-indigo-400 bg-neutral-950 px-1.5 py-0.5 rounded border border-neutral-800 font-mono">
-                  electron/main.cjs
-                </code>{' '}
-                wrapper.
+                You can also compile your own standalone executables directly on your machine using
+                the preconfigured npm scripts in <code className="text-indigo-400 font-mono">package.json</code>:
               </p>
 
-              {/* Step 1 */}
+              {/* Windows Build Command */}
               <div className="p-3.5 bg-neutral-950/60 rounded-xl border border-neutral-800 space-y-2">
                 <div className="flex items-center justify-between">
                   <span className="font-semibold text-neutral-200 text-xs flex items-center gap-2">
-                    <Terminal className="w-4 h-4 text-emerald-400" />
-                    <span>Step 1: Install Electron in the project</span>
+                    <Terminal className="w-4 h-4 text-indigo-400" />
+                    <span>Build Windows .exe (Installer &amp; Portable)</span>
                   </span>
                   <button
                     onClick={() =>
-                      handleCopy('npm install --save-dev electron electron-builder', 'step1')
+                      handleCopy('npm run desktop:build:win', 'cli_win')
                     }
                     className="flex items-center gap-1 text-[11px] text-neutral-400 hover:text-white"
                   >
-                    {copiedCommand === 'step1' ? (
+                    {copiedCommand === 'cli_win' ? (
                       <Check className="w-3 h-3 text-emerald-400" />
                     ) : (
                       <Copy className="w-3 h-3" />
                     )}
-                    <span>{copiedCommand === 'step1' ? 'Copied' : 'Copy'}</span>
+                    <span>{copiedCommand === 'cli_win' ? 'Copied' : 'Copy'}</span>
                   </button>
                 </div>
-                <pre className="bg-neutral-950 text-emerald-400 p-2.5 rounded-lg border border-neutral-800 font-mono text-[11px] overflow-x-auto">
-                  npm install --save-dev electron electron-builder
-                </pre>
-              </div>
-
-              {/* Step 2 */}
-              <div className="p-3.5 bg-neutral-950/60 rounded-xl border border-neutral-800 space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="font-semibold text-neutral-200 text-xs flex items-center gap-2">
-                    <Terminal className="w-4 h-4 text-emerald-400" />
-                    <span>Step 2: Build the web assets and package .exe</span>
-                  </span>
-                  <button
-                    onClick={() =>
-                      handleCopy('npm run build && npx electron .', 'step2')
-                    }
-                    className="flex items-center gap-1 text-[11px] text-neutral-400 hover:text-white"
-                  >
-                    {copiedCommand === 'step2' ? (
-                      <Check className="w-3 h-3 text-emerald-400" />
-                    ) : (
-                      <Copy className="w-3 h-3" />
-                    )}
-                    <span>{copiedCommand === 'step2' ? 'Copied' : 'Copy'}</span>
-                  </button>
-                </div>
-                <pre className="bg-neutral-950 text-emerald-400 p-2.5 rounded-lg border border-neutral-800 font-mono text-[11px] overflow-x-auto">
-                  npm run build &amp;&amp; npx electron .
-                </pre>
-              </div>
-
-              {/* Step 3 Packaging */}
-              <div className="p-3.5 bg-neutral-950/60 rounded-xl border border-neutral-800 space-y-2">
-                <div className="flex items-center justify-between">
-                  <span className="font-semibold text-neutral-200 text-xs flex items-center gap-2">
-                    <Terminal className="w-4 h-4 text-emerald-400" />
-                    <span>Step 3: Generate standalone Windows .exe installer</span>
-                  </span>
-                  <button
-                    onClick={() =>
-                      handleCopy('npx electron-builder --win', 'step3')
-                    }
-                    className="flex items-center gap-1 text-[11px] text-neutral-400 hover:text-white"
-                  >
-                    {copiedCommand === 'step3' ? (
-                      <Check className="w-3 h-3 text-emerald-400" />
-                    ) : (
-                      <Copy className="w-3 h-3" />
-                    )}
-                    <span>{copiedCommand === 'step3' ? 'Copied' : 'Copy'}</span>
-                  </button>
-                </div>
-                <pre className="bg-neutral-950 text-emerald-400 p-2.5 rounded-lg border border-neutral-800 font-mono text-[11px] overflow-x-auto">
-                  npx electron-builder --win
+                <pre className="bg-neutral-950 text-indigo-300 p-2.5 rounded-lg border border-neutral-800 font-mono text-[11px] overflow-x-auto">
+                  npm run desktop:build:win
                 </pre>
                 <p className="text-[11px] text-neutral-500">
-                  This generates a portable Windows <code className="text-neutral-400">.exe</code> in the <code className="text-neutral-400">dist/</code> folder.
+                  Outputs <code className="text-neutral-300">release/CapturePro-Setup-1.0.0.exe</code>.
+                </p>
+              </div>
+
+              {/* Linux Build Command */}
+              <div className="p-3.5 bg-neutral-950/60 rounded-xl border border-neutral-800 space-y-2">
+                <div className="flex items-center justify-between">
+                  <span className="font-semibold text-neutral-200 text-xs flex items-center gap-2">
+                    <Terminal className="w-4 h-4 text-amber-400" />
+                    <span>Build Linux .AppImage &amp; .deb</span>
+                  </span>
+                  <button
+                    onClick={() =>
+                      handleCopy('npm run desktop:build:linux', 'cli_linux')
+                    }
+                    className="flex items-center gap-1 text-[11px] text-neutral-400 hover:text-white"
+                  >
+                    {copiedCommand === 'cli_linux' ? (
+                      <Check className="w-3 h-3 text-emerald-400" />
+                    ) : (
+                      <Copy className="w-3 h-3" />
+                    )}
+                    <span>{copiedCommand === 'cli_linux' ? 'Copied' : 'Copy'}</span>
+                  </button>
+                </div>
+                <pre className="bg-neutral-950 text-amber-300 p-2.5 rounded-lg border border-neutral-800 font-mono text-[11px] overflow-x-auto">
+                  npm run desktop:build:linux
+                </pre>
+                <p className="text-[11px] text-neutral-500">
+                  Outputs <code className="text-neutral-300">release/CapturePro-1.0.0.AppImage</code> and <code className="text-neutral-300">release/CapturePro_1.0.0_amd64.deb</code>.
                 </p>
               </div>
             </div>
