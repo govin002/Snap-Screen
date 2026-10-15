@@ -7,6 +7,7 @@ import {
   FileText,
   MonitorPlay,
   Layers,
+  Laptop,
 } from 'lucide-react';
 import { ActiveTab, LibraryItem } from './types';
 import { RecorderDashboard } from './components/RecorderDashboard';
@@ -15,12 +16,14 @@ import { LibraryModal } from './components/LibraryModal';
 import { VideoPlayerModal } from './components/VideoStudio/VideoPlayerModal';
 import { Teleprompter } from './components/Teleprompter';
 import { ShortcutsModal } from './components/ShortcutsModal';
+import { DesktopAppModal } from './components/DesktopAppModal';
 
 export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('recorder');
   const [isLibraryOpen, setIsLibraryOpen] = useState(false);
   const [isShortcutsOpen, setIsShortcutsOpen] = useState(false);
   const [isTeleprompterOpen, setIsTeleprompterOpen] = useState(false);
+  const [isDesktopModalOpen, setIsDesktopModalOpen] = useState(false);
 
   // Active video in player modal
   const [activeVideoItem, setActiveVideoItem] = useState<LibraryItem | null>(null);
@@ -140,6 +143,14 @@ export default function App() {
             <Keyboard className="w-3.5 h-3.5 text-neutral-400" />
             <span>Shortcuts</span>
           </button>
+
+          <button
+            onClick={() => setIsDesktopModalOpen(true)}
+            className="flex items-center gap-1.5 transition-colors hover:text-indigo-400 whitespace-nowrap shrink-0"
+          >
+            <Laptop className="w-3.5 h-3.5 text-indigo-400" />
+            <span>Desktop App</span>
+          </button>
         </nav>
 
         {/* Zone 3: 1 primary action button & quick help */}
@@ -237,6 +248,12 @@ export default function App() {
           }}
         />
       )}
+
+      {/* Desktop Application Options Modal */}
+      <DesktopAppModal
+        isOpen={isDesktopModalOpen}
+        onClose={() => setIsDesktopModalOpen(false)}
+      />
     </div>
   );
 }
