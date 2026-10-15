@@ -51,6 +51,20 @@ jobs:
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/') || github.event_name == 'workflow_dispatch'
         with:
+          name: "CapturePro PC v1.0.0 — Screen Recorder & Snipping Studio"
+          body: |
+            ## CapturePro PC v1.0.0 Desktop Release
+
+            ### Available Binaries:
+            - **Windows**: `CapturePro-Setup-1.0.0.exe` (Installer) & `CapturePro-1.0.0-portable.exe` (Portable)
+            - **Linux**: `CapturePro-1.0.0.AppImage` (Universal Linux) & `CapturePro_1.0.0_amd64.deb` (Debian/Ubuntu)
+
+            ### Features:
+            - Hardware-accelerated 4K & 1080p 60 FPS PC Screen Recording
+            - Draggable Webcam Picture-in-Picture Bubble (Circle, Rounded, Square)
+            - Dual Audio Mixing (PC System Audio + Microphone)
+            - Snipping Tool with Step Badges, Blur Redaction, and Clipboard Copy
+            - Video Trimming Studio and Audio WAV Extractor
           files: |
             release/*.exe
             release/*.AppImage
