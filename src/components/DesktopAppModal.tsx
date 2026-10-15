@@ -131,6 +131,27 @@ export const DesktopAppModal: React.FC<DesktopAppModalProps> = ({ isOpen, onClos
                 </a>
               </div>
 
+              {/* Full Version 1.0.0 Bundle Card */}
+              <div className="p-4 rounded-xl bg-gradient-to-r from-indigo-950/60 to-purple-950/40 border border-indigo-700/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div>
+                  <div className="flex items-center gap-2 text-white font-bold text-sm mb-1">
+                    <span className="px-2 py-0.5 rounded bg-indigo-600 text-white text-[11px] font-mono">v1.0.0</span>
+                    <span>Complete Release Bundle (Ready to Download)</span>
+                  </div>
+                  <p className="text-neutral-300 text-xs leading-relaxed">
+                    Includes all formats: Linux <code className="text-emerald-400 font-mono">.deb</code>, universal <code className="text-amber-400 font-mono">.tar.gz</code>, Windows <code className="text-indigo-300 font-mono">.zip</code> launcher, and setup scripts.
+                  </p>
+                </div>
+                <a
+                  href="/downloads/CapturePro-v1.0.0-Release-All.zip"
+                  download="CapturePro-v1.0.0-Release-All.zip"
+                  className="flex items-center gap-2 px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-xl shadow-lg transition-transform active:scale-95 whitespace-nowrap"
+                >
+                  <FolderDown className="w-4 h-4" />
+                  <span>Download v1.0.0 Bundle</span>
+                </a>
+              </div>
+
               {/* Direct Download Cards Grid */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* Windows Card */}
