@@ -148,32 +148,16 @@ export const DesktopAppModal: React.FC<DesktopAppModalProps> = ({ isOpen, onClos
                     </p>
                     <div className="space-y-2">
                       <a
-                        href={`${latestReleaseUrl}/download/CapturePro-Setup-1.0.0.exe`}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="w-full flex items-center justify-between p-2.5 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700/80 rounded-lg text-neutral-200 transition-colors"
+                        href="/downloads/CapturePro-Windows.zip"
+                        download="CapturePro-Windows.zip"
+                        className="w-full flex items-center justify-between p-2.5 bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/50 rounded-lg text-white transition-all shadow-xs"
                       >
                         <div className="flex items-center gap-2">
                           <FolderDown className="w-4 h-4 text-indigo-400" />
-                          <span className="font-medium text-xs">CapturePro-Setup.exe</span>
+                          <span className="font-semibold text-xs">CapturePro-Windows.zip</span>
                         </div>
-                        <span className="text-[10px] bg-neutral-800 px-1.5 py-0.5 rounded text-neutral-400 font-mono">
-                          Installer
-                        </span>
-                      </a>
-
-                      <a
-                        href={`${latestReleaseUrl}/download/CapturePro-1.0.0-portable.exe`}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="w-full flex items-center justify-between p-2.5 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700/80 rounded-lg text-neutral-200 transition-colors"
-                      >
-                        <div className="flex items-center gap-2">
-                          <Download className="w-4 h-4 text-neutral-400" />
-                          <span className="font-medium text-xs">CapturePro-Portable.exe</span>
-                        </div>
-                        <span className="text-[10px] bg-neutral-800 px-1.5 py-0.5 rounded text-neutral-400 font-mono">
-                          Portable
+                        <span className="text-[10px] bg-indigo-600 px-2 py-0.5 rounded text-white font-mono font-medium">
+                          Direct Package
                         </span>
                       </a>
                     </div>
@@ -195,14 +179,27 @@ export const DesktopAppModal: React.FC<DesktopAppModalProps> = ({ isOpen, onClos
                     </p>
                     <div className="space-y-2">
                       <a
-                        href={`${latestReleaseUrl}/download/CapturePro-1.0.0.AppImage`}
-                        target="_blank"
-                        rel="noreferrer"
+                        href="/downloads/CapturePro_1.0.0_amd64.deb"
+                        download="CapturePro_1.0.0_amd64.deb"
+                        className="w-full flex items-center justify-between p-2.5 bg-indigo-600/20 hover:bg-indigo-600/30 border border-indigo-500/50 rounded-lg text-white transition-all shadow-xs"
+                      >
+                        <div className="flex items-center gap-2">
+                          <FolderDown className="w-4 h-4 text-emerald-400" />
+                          <span className="font-semibold text-xs">CapturePro_1.0.0_amd64.deb</span>
+                        </div>
+                        <span className="text-[10px] bg-indigo-600 px-2 py-0.5 rounded text-white font-mono font-medium">
+                          Direct .deb
+                        </span>
+                      </a>
+
+                      <a
+                        href="/downloads/CapturePro-Linux-Desktop.tar.gz"
+                        download="CapturePro-Linux-Desktop.tar.gz"
                         className="w-full flex items-center justify-between p-2.5 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700/80 rounded-lg text-neutral-200 transition-colors"
                       >
                         <div className="flex items-center gap-2">
-                          <FolderDown className="w-4 h-4 text-amber-400" />
-                          <span className="font-medium text-xs">CapturePro.AppImage</span>
+                          <Download className="w-4 h-4 text-amber-400" />
+                          <span className="font-medium text-xs">CapturePro-Linux-Desktop.tar.gz</span>
                         </div>
                         <span className="text-[10px] bg-neutral-800 px-1.5 py-0.5 rounded text-neutral-400 font-mono">
                           Universal
@@ -210,17 +207,16 @@ export const DesktopAppModal: React.FC<DesktopAppModalProps> = ({ isOpen, onClos
                       </a>
 
                       <a
-                        href={`${latestReleaseUrl}/download/CapturePro_1.0.0_amd64.deb`}
-                        target="_blank"
-                        rel="noreferrer"
+                        href="/downloads/install-linux.sh"
+                        download="install-linux.sh"
                         className="w-full flex items-center justify-between p-2.5 bg-neutral-900 hover:bg-neutral-800 border border-neutral-700/80 rounded-lg text-neutral-200 transition-colors"
                       >
                         <div className="flex items-center gap-2">
-                          <Download className="w-4 h-4 text-neutral-400" />
-                          <span className="font-medium text-xs">CapturePro_amd64.deb</span>
+                          <Terminal className="w-4 h-4 text-neutral-400" />
+                          <span className="font-medium text-xs">install-linux.sh (Quick Script)</span>
                         </div>
                         <span className="text-[10px] bg-neutral-800 px-1.5 py-0.5 rounded text-neutral-400 font-mono">
-                          Debian/Ubuntu
+                          Installer
                         </span>
                       </a>
                     </div>

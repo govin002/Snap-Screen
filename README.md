@@ -11,25 +11,31 @@
 
 ## 📥 Direct Downloads
 
-Download the latest pre-built binaries directly from the [GitHub Releases Page](https://github.com/gowin297/capturepro-pc/releases/latest):
+Download the pre-built desktop binaries directly from GitHub Releases:
 
-### 🪟 Windows (Windows 11 / 10 - 64-bit)
+> ⚠️ **Why does a GitHub link show 404 right now?**
+> On GitHub, release links (`/releases/latest/download/...`) only become active **after** you push this codebase to your GitHub repository and trigger the release tag (`v1.0.0`). Until you publish the release, GitHub does not have the files hosted yet.
+> 
+> 👉 See [**How to Publish the Release to GitHub**](#-how-to-publish-the-release-to-github) below to make these links live, or use the **[Instant Desktop PWA](#-instant-web--desktop-pwa-version)** to run it immediately without waiting!
 
-| Package | Format | Direct Download Link |
+### ⚡ Instant Direct Downloads (Ready to download right now)
+
+Click below to download the packages directly:
+
+| Platform | Format | Direct Download (Immediate) |
 |---|---|---|
-| **Windows Installer** | `.exe` (Setup Wizard) | [**Download CapturePro-Setup.exe**](https://github.com/gowin297/capturepro-pc/releases/latest/download/CapturePro-Setup-1.0.0.exe) |
-| **Windows Portable** | `.exe` (Standalone) | [**Download CapturePro-Portable.exe**](https://github.com/gowin297/capturepro-pc/releases/latest/download/CapturePro-1.0.0-portable.exe) |
-
-> **Tip:** If Windows SmartScreen prompts on first launch, click **More info** &rarr; **Run anyway**.
+| **Linux (Debian / Ubuntu)** | `.deb` | [**Download CapturePro_1.0.0_amd64.deb**](/downloads/CapturePro_1.0.0_amd64.deb) |
+| **Linux (All Distros)** | `.tar.gz` | [**Download CapturePro-Linux-Desktop.tar.gz**](/downloads/CapturePro-Linux-Desktop.tar.gz) |
+| **Linux (Quick Script)** | `.sh` | [**Download install-linux.sh**](/downloads/install-linux.sh) |
+| **Windows Desktop** | `.zip` | [**Download CapturePro-Windows.zip**](/downloads/CapturePro-Windows.zip) |
 
 ---
 
-### 🐧 Linux (Ubuntu, Debian, Fedora, Arch, Mint)
+### 📦 GitHub Releases (After Pushing to GitHub)
 
-| Package | Format | Direct Download Link |
-|---|---|---|
-| **Linux Universal (AppImage)** | `.AppImage` (All distros) | [**Download CapturePro.AppImage**](https://github.com/gowin297/capturepro-pc/releases/latest/download/CapturePro-1.0.0.AppImage) |
-| **Debian / Ubuntu Package** | `.deb` | [**Download CapturePro_amd64.deb**](https://github.com/gowin297/capturepro-pc/releases/latest/download/CapturePro_1.0.0_amd64.deb) |
+If you have pushed this repository to GitHub and triggered the automated workflow, you can also download from:
+- **Windows Setup**: [CapturePro-Setup.exe](https://github.com/gowin297/capturepro-pc/releases/latest/download/CapturePro-Setup-1.0.0.exe)
+- **Linux AppImage**: [CapturePro.AppImage](https://github.com/gowin297/capturepro-pc/releases/latest/download/CapturePro-1.0.0.AppImage)
 
 #### Running on Linux:
 - **AppImage**:
@@ -128,17 +134,32 @@ npm run dev
 
 ---
 
-## 🚀 Automated GitHub Releases (CI/CD)
+## 🚀 How to Publish the Release to GitHub
 
-This repository includes a multi-platform GitHub Actions workflow at [`.github/workflows/build-desktop.yml`](.github/workflows/build-desktop.yml).
+To make the download links live and fix the 404:
 
-To release a new version:
-1. Tag your commit:
+1. **Create the GitHub Repository**:
+   Go to [github.com/new](https://github.com/new) and create a repository named `capturepro-pc` (or your preferred name).
+
+2. **Push your code to GitHub**:
+   ```bash
+   git init
+   git remote add origin https://github.com/gowin297/capturepro-pc.git
+   git add .
+   git commit -m "Initial commit of CapturePro PC"
+   git branch -M main
+   git push -u origin main
+   ```
+
+3. **Publish the Release Tag (triggers automated build)**:
    ```bash
    git tag v1.0.0
-   git push --tags
+   git push origin v1.0.0
    ```
-2. GitHub Actions will automatically compile on `windows-latest` and `ubuntu-latest` runners, and publish the `.exe`, `.AppImage`, and `.deb` files directly to your GitHub Releases page.
+   *Alternatively, go to the **Actions** tab on your GitHub repository and click **Run workflow**.*
+
+4. **GitHub Actions builds & uploads the binaries**:
+   GitHub Actions will automatically run on Windows and Ubuntu runners, compile the files, and attach `CapturePro-Setup-1.0.0.exe`, `CapturePro-1.0.0.AppImage`, and `CapturePro_1.0.0_amd64.deb` to the release. Once complete (usually ~2-3 minutes), the download URLs are live!
 
 ---
 
