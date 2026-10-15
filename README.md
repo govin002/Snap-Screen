@@ -2,60 +2,69 @@
 
 > Professional, hardware-accelerated PC screen recorder, webcam studio, audio mixer, and screenshot capture suite with real-time annotations, blur redaction, and in-browser video trimming.
 
-[![Platform - Windows](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-blue?logo=windows)](https://github.com/gowin297/capturepro-pc/releases/latest)
-[![Platform - Linux](https://img.shields.io/badge/Platform-Linux%20(Ubuntu%2FFedora%2FArch)-orange?logo=linux)](https://github.com/gowin297/capturepro-pc/releases/latest)
-[![GitHub Release](https://img.shields.io/github/v/release/gowin297/capturepro-pc?include_prereleases&label=Latest%20Release)](https://github.com/gowin297/capturepro-pc/releases/latest)
-[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Release](https://img.shields.io/badge/Release-v1.0.0-indigo?style=flat-square&logo=github)](https://github.com/gowin297/capturepro-pc/releases/tag/v1.0.0)
+[![Platform - Windows](https://img.shields.io/badge/Platform-Windows%2010%20%7C%2011-0078D6?style=flat-square&logo=windows)](https://ais-dev-gq4drhi4etgfns74tlwr5v-22416287859.asia-east1.run.app/downloads/CapturePro-Windows.zip)
+[![Platform - Linux](https://img.shields.io/badge/Platform-Linux%20(Ubuntu%2FFedora%2FArch)-FCC624?style=flat-square&logo=linux)](https://ais-dev-gq4drhi4etgfns74tlwr5v-22416287859.asia-east1.run.app/downloads/CapturePro_1.0.0_amd64.deb)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=flat-square)](LICENSE)
 
 ---
 
-## 📥 Direct Downloads
+## 📥 Direct Downloads (Version 1.0.0 — Pre-Built Binaries)
 
-Download the pre-built desktop binaries directly from GitHub Releases:
+> 💡 **Ready to use immediately:** These are pre-compiled desktop release packages. No source code or compilation needed.
 
-> ⚠️ **Why does a GitHub link show 404 right now?**
-> On GitHub, release links (`/releases/latest/download/...`) only become active **after** you push this codebase to your GitHub repository and trigger the release tag (`v1.0.0`). Until you publish the release, GitHub does not have the files hosted yet.
-> 
-> 👉 See [**How to Publish the Release to GitHub**](#-how-to-publish-the-release-to-github) below to make these links live, or use the **[Instant Desktop PWA](#-instant-web--desktop-pwa-version)** to run it immediately without waiting!
-
-### ⚡ Instant Direct Downloads (Ready to download right now)
-
-Click below to download the packages directly:
-
-| Platform | Format | Direct Download (Immediate) |
+### 🌟 All-in-One Release Bundle
+| Package | Description | Direct Download |
 |---|---|---|
-| **Linux (Debian / Ubuntu)** | `.deb` | [**Download CapturePro_1.0.0_amd64.deb**](/downloads/CapturePro_1.0.0_amd64.deb) |
-| **Linux (All Distros)** | `.tar.gz` | [**Download CapturePro-Linux-Desktop.tar.gz**](/downloads/CapturePro-Linux-Desktop.tar.gz) |
-| **Linux (Quick Script)** | `.sh` | [**Download install-linux.sh**](/downloads/install-linux.sh) |
-| **Windows Desktop** | `.zip` | [**Download CapturePro-Windows.zip**](/downloads/CapturePro-Windows.zip) |
+| **Complete v1.0.0 Release ZIP** | Contains all Windows & Linux packages + setup scripts | [**Download `CapturePro-v1.0.0-Release-All.zip`**](https://ais-dev-gq4drhi4etgfns74tlwr5v-22416287859.asia-east1.run.app/downloads/CapturePro-v1.0.0-Release-All.zip) |
 
 ---
 
-### 📦 GitHub Releases (After Pushing to GitHub)
+### 🐧 Linux (Ubuntu, Debian, Mint, Fedora, Arch, openSUSE)
 
-If you have pushed this repository to GitHub and triggered the automated workflow, you can also download from:
-- **Windows Setup**: [CapturePro-Setup.exe](https://github.com/gowin297/capturepro-pc/releases/latest/download/CapturePro-Setup-1.0.0.exe)
-- **Linux AppImage**: [CapturePro.AppImage](https://github.com/gowin297/capturepro-pc/releases/latest/download/CapturePro-1.0.0.AppImage)
+| Package | Format | Direct Download | How to Run / Install |
+|---|---|---|---|
+| **Debian / Ubuntu Package** | `.deb` | [**Download `CapturePro_1.0.0_amd64.deb`**](https://ais-dev-gq4drhi4etgfns74tlwr5v-22416287859.asia-east1.run.app/downloads/CapturePro_1.0.0_amd64.deb) | `sudo dpkg -i CapturePro_1.0.0_amd64.deb` |
+| **Universal Linux Desktop** | `.tar.gz` | [**Download `CapturePro-Linux-Desktop.tar.gz`**](https://ais-dev-gq4drhi4etgfns74tlwr5v-22416287859.asia-east1.run.app/downloads/CapturePro-Linux-Desktop.tar.gz) | Extract & run `./install.sh` *(No sudo required)* |
+| **Quick Installer Script** | `.sh` | [**Download `install-linux.sh`**](https://ais-dev-gq4drhi4etgfns74tlwr5v-22416287859.asia-east1.run.app/downloads/install-linux.sh) | `bash install-linux.sh` |
 
-#### Running on Linux:
-- **AppImage**:
-  ```bash
-  chmod +x CapturePro-1.0.0.AppImage
-  ./CapturePro-1.0.0.AppImage
-  ```
-- **Debian / Ubuntu (.deb)**:
+#### Linux Installation Details:
+- **Method A (Debian/Ubuntu/Mint)**:
   ```bash
   sudo dpkg -i CapturePro_1.0.0_amd64.deb
-  sudo apt-get install -f # resolve any dependencies if needed
   ```
+  *Includes `Installed-Size` header, `Depends: xdg-utils`, and automated desktop database update triggers.*
+
+- **Method B (Universal Linux — No root/sudo required)**:
+  ```bash
+  tar -xzf CapturePro-Linux-Desktop.tar.gz
+  cd capturepro-linux-universal
+  ./install.sh
+  ```
+  *Installs directly into `~/.local/share/applications/capturepro.desktop` so CapturePro appears in your GNOME/KDE/XFCE app menu.*
 
 ---
 
-## 🌐 Instant Web / Desktop PWA Version
+### 🪟 Windows (Windows 11 / 10 - 64-bit)
 
-You can also use CapturePro instantly without downloading any installer:
-- **Open in Browser**: Visit the hosted web application.
-- **1-Click Desktop PWA**: Click **Desktop App** in the navigation bar to install it as an independent desktop window with taskbar and desktop icons.
+| Package | Format | Direct Download | How to Run |
+|---|---|---|---|
+| **Windows Desktop Launcher** | `.zip` (PKZIP) | [**Download `CapturePro-Windows.zip`**](https://ais-dev-gq4drhi4etgfns74tlwr5v-22416287859.asia-east1.run.app/downloads/CapturePro-Windows.zip) | Extract & double-click `Launch-CapturePro.bat` |
+
+#### Windows Running Details:
+1. Download and extract **`CapturePro-Windows.zip`** *(Standard PKZIP format compatible with Windows Explorer)*.
+2. Double-click **`Launch-CapturePro.bat`** to open CapturePro in a dedicated desktop window without browser tabs or address bars.
+3. Or double-click **`Create-Desktop-Shortcut.vbs`** to automatically add a shortcut icon to your Windows Desktop.
+
+---
+
+## 🌐 Instant Web / Desktop PWA Version (Zero Download)
+
+You can also run CapturePro instantly right now:
+- **Web App**: Open the live application URL in your browser.
+- **1-Click Desktop PWA**: Click **Desktop App** in the navigation bar &rarr; **Install to Desktop Now**.
+  - Creates a standalone desktop window on Windows, macOS, or Linux.
+  - Adds desktop and taskbar shortcuts with hardware-accelerated offline support.
 
 ---
 
@@ -63,7 +72,7 @@ You can also use CapturePro instantly without downloading any installer:
 
 - **4K & 1080p Screen Recording**: Smooth 60 FPS recording of full screens, application windows, or browser tabs.
 - **Webcam Picture-in-Picture (PiP)**: Draggable corner overlay with circular avatar, rounded rectangle, or square styling and mirror mode.
-- **Dual Audio Mixing Engine**: Combines system audio (gameplay, video, meetings) with microphone commentary via Web Audio API with hardware echo cancellation and a live VU meter.
+- **Dual Audio Mixing Engine**: Combines PC system audio (gameplay, video, meetings) with microphone commentary via Web Audio API with hardware echo cancellation and a real-time VU meter.
 - **Pro Snipping & Markup Studio**:
   - Instant and delayed capture (3s / 5s / 10s countdown to capture hover states and right-click dropdown menus).
   - Paste any screenshot directly from your clipboard (`Ctrl + V`).
@@ -91,75 +100,48 @@ You can also use CapturePro instantly without downloading any installer:
 
 ---
 
-## 🛠️ Building from Source
+## 🛠️ Building & Re-packaging from Source
 
 ### Prerequisites
-- [Node.js](https://nodejs.org/) (v18 or newer)
-- npm or yarn
+- Node.js (v18 or newer)
+- Python 3
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/gowin297/capturepro-pc.git
-cd capturepro-pc
-```
-
-### 2. Install dependencies
+### 1. Run Development Server
 ```bash
 npm install
-```
-
-### 3. Run in Development Mode
-```bash
 npm run dev
 ```
 
-### 4. Compile Desktop Executables Locally
+### 2. Build Production Web Assets
+```bash
+npm run build
+```
 
-- **Build for Windows (.exe)**:
-  ```bash
-  npm run desktop:build:win
-  ```
-  *Binaries will be generated in `release/CapturePro-Setup-1.0.0.exe`.*
-
-- **Build for Linux (.AppImage and .deb)**:
-  ```bash
-  npm run desktop:build:linux
-  ```
-  *Binaries will be generated in `release/CapturePro-1.0.0.AppImage` and `release/CapturePro_1.0.0_amd64.deb`.*
-
-- **Build for Both Platforms**:
-  ```bash
-  npm run desktop:build:all
-  ```
+### 3. Generate All Desktop Release Packages (.deb, Windows .zip, Linux .tar.gz)
+```bash
+python3 scripts/build_packages.py
+```
+*Outputs all tested, compliant binaries into `public/downloads/`.*
 
 ---
 
-## 🚀 How to Publish the Release to GitHub
+## 🚀 GitHub Actions Automated Releases (CI/CD)
 
-To make the download links live and fix the 404:
+The repository includes [`.github/workflows/build-desktop.yml`](.github/workflows/build-desktop.yml) configured with release title:
+`CapturePro PC v1.0.0 — Screen Recorder & Snipping Studio`.
 
-1. **Create the GitHub Repository**:
-   Go to [github.com/new](https://github.com/new) and create a repository named `capturepro-pc` (or your preferred name).
-
-2. **Push your code to GitHub**:
-   ```bash
-   git init
-   git remote add origin https://github.com/gowin297/capturepro-pc.git
-   git add .
-   git commit -m "Initial commit of CapturePro PC"
-   git branch -M main
-   git push -u origin main
-   ```
-
-3. **Publish the Release Tag (triggers automated build)**:
-   ```bash
-   git tag v1.0.0
-   git push origin v1.0.0
-   ```
-   *Alternatively, go to the **Actions** tab on your GitHub repository and click **Run workflow**.*
-
-4. **GitHub Actions builds & uploads the binaries**:
-   GitHub Actions will automatically run on Windows and Ubuntu runners, compile the files, and attach `CapturePro-Setup-1.0.0.exe`, `CapturePro-1.0.0.AppImage`, and `CapturePro_1.0.0_amd64.deb` to the release. Once complete (usually ~2-3 minutes), the download URLs are live!
+Whenever you push to GitHub:
+```bash
+git init
+git remote add origin https://github.com/<your-username>/capturepro-pc.git
+git add .
+git commit -m "CapturePro PC v1.0.0"
+git branch -M main
+git push -u origin main
+git tag v1.0.0
+git push origin v1.0.0
+```
+GitHub Actions will automatically build Windows and Linux binaries and publish them to your GitHub Releases page.
 
 ---
 
